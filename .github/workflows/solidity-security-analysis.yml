@@ -22,3 +22,18 @@ jobs:
           https://api.github.com/repos/Aegis-Vault/AegisVault/issues \
           -d '{"title": "Security Report", "body": "New security report uploaded."}'
 
+      - name: Install Slither
+        run: |
+          pip install slither-analyzer
+      - name: Run Slither Analysis
+        run: |
+            slither contracts/ --json > security_report.json
+      - name: Upload Security Report
+        env:
+            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+           -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/Aegis-Vault/AegisVault/issues \
+          -d '{"title": "Security Report", "body": "'"$(cat security_report.json)"'"}'
+
