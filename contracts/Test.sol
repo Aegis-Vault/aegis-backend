@@ -5,4 +5,3 @@ contract Test {
 	function setValue(uint256 newValue) public {
     		value = newValue;
 }
-
