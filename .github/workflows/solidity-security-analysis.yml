@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          SECURITY_REPORT=$(jq -c . security_report.json) # Properly encode JSON
+          SECURITY_REPORT=$(jq -c . security_report.json || echo "{}")
           curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/Aegis-Vault/AegisVault/issues \
-          -d '{"title": "Security Report", "body": "'"${SECURITY_REPORT}"'"}'
+          -d '{"title": "Security Report", "body": "'"$SECURITY_REPORT"'"}'
