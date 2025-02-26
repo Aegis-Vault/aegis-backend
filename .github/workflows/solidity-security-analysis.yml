@@ -3,11 +3,11 @@ name: Solidity Security Analysis
 on:
   push:
     paths:
-      - "**.sol" # Run scan when Solidity files are updated
+      - "**.sol"
   pull_request:
     paths:
-      - "**.sol" # Run scan when PRs modify Solidity files
-  workflow_dispatch: # Keep manual trigger
+      - "**.sol"
+  workflow_dispatch:
 
 jobs:
   security_analysis:
@@ -33,15 +33,15 @@ jobs:
       - name: Debug - Check Solidity Files
         run: |
           if [ ! -d "contracts" ]; then
-            echo "ERROR: contracts directory not found!"
+            echo "❌ ERROR: contracts directory not found!"
             exit 1
           fi
-          echo "Contracts directory exists. Listing contents:"
+          echo "✅ Contracts directory exists. Listing contents:"
           ls -la contracts/
 
       - name: Run Slither Analysis
         run: |
-          slither contracts/ --json security_report.json || (echo "Slither failed!" && exit 1)
+          slither contracts/ --json security_report.json || (echo "❌ Slither failed! Debugging..." && ls -la contracts/ && exit 1)
 
       - name: Debug - List Directory Contents
         run: ls -la
@@ -51,12 +51,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          if [ -f security_report.json ]; then
-            SECURITY_REPORT=$(jq -c . security_report.json)
-            curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/Aegis-Vault/AegisVault/issues \
-            -d '{"title": "Security Report", "body": "'"$SECURITY_REPORT"'"}'
-          else
-            echo "Security report not found! Skipping upload."
+          if [ ! -f security_report.json ]; then
+            echo "❌ Security report not found! Debugging..."
+            ls -la
+            exit 1
           fi
+          SECURITY_REPORT=$(jq -c . security_report.json)
+          curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/Aegis-Vault/AegisVault/issues \
+          -d '{"title": "Security Report", "body": "'"$SECURITY_REPORT"'"}'
