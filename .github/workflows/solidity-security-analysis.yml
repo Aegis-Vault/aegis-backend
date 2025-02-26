@@ -30,11 +30,13 @@ jobs:
 
       - name: Install Slither
         run: pip install slither-analyzer
-
+        
       - name: Run Slither Analysis
-        run: |
-          slither contracts/ --json security_report.json || true
-
+        run: slither contracts/ --json security_report.json
+ 
+      - name: Debug - List Directory Contents
+        run: ls -la
+         
       - name: Upload Security Report
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
