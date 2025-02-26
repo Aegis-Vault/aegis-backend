@@ -1,7 +1,13 @@
 name: Solidity Security Analysis
 
 on:
-  workflow_dispatch:  # ✅ Allows manual API triggers
+  push:
+    paths:
+      - "**.sol" # Run scan when Solidity files are updated
+  pull_request:
+    paths:
+      - "**.sol" # Run scan when PRs modify Solidity files
+  workflow_dispatch: # Keep manual trigger
 
 jobs:
   security_analysis:
