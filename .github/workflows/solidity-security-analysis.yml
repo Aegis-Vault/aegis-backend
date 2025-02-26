@@ -5,7 +5,7 @@ on:
 
 jobs:
   security_analysis:
-    runs-on: self-hosted  # Or 'ubuntu-latest' if using GitHub-hosted runners
+    runs-on: ubuntu-latest  # Change this from self-hosted to ubuntu-latest
     steps:
       - name: Set up job
         run: echo "Starting Solidity Security Analysis"
