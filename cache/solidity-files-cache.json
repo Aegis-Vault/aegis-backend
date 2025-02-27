@@ -1,0 +1,113 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/haseebsayedbassam/aegis-backend/contracts/ExampleContract.sol": {
+      "lastModificationDate": 1740545015634,
+      "contentHash": "0abfa36ca65eb238ff73378743437d7c",
+      "sourceName": "contracts/ExampleContract.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ExampleContract"
+      ]
+    },
+    "/Users/haseebsayedbassam/aegis-backend/contracts/NewTest.sol": {
+      "lastModificationDate": 1740545015662,
+      "contentHash": "f937d761044cf7c6c55f69154572967a",
+      "sourceName": "contracts/NewTest.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "NewTest"
+      ]
+    },
+    "/Users/haseebsayedbassam/aegis-backend/contracts/SecurityAudit.sol": {
+      "lastModificationDate": 1740615287517,
+      "contentHash": "fb40f2effb76e27669ca39e196fb3176",
+      "sourceName": "contracts/SecurityAudit.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SecurityAudit"
+      ]
+    }
+  }
+}
